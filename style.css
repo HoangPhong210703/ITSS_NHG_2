@@ -1,406 +1,89 @@
 body {
     font-family: sans-serif;
     margin: 20px;
-    background-color: #f4f6f8;
-    display: flex;
-    justify-content: center;
+    background-color: #f4f4f4;
 }
 
 .container {
-    width: 950px; /* Adjust as needed to accommodate all sections */
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Spacing between the main sections */
-}
-
-.dashboard-container,
-.budget-container,
-.add-budget-container {
+    max-width: 600px;
+    margin: 0 auto;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-}
-
-/* --- Dashboard Screen Styles --- */
-.dashboard-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.dashboard-widget {
-    background-color: #f9f9f9;
-    border-radius: 6px;
     padding: 20px;
-}
-
-.total-balance-widget {
-    grid-column: 1 / -1;
-    text-align: left;
-}
-
-.total-balance {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.balance-details {
-    color: #777;
-    font-size: 0.9em;
-}
-
-.pie-chart-widget {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.pie-chart {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: #ddd;
-    margin-bottom: 10px;
-}
-
-.earnings-chart {
-    background-image: conic-gradient(#a7ffd3 57.74%, #8ac4ff 42.26%);
-}
-
-.spent-chart {
-    background-image: conic-gradient(#8ac4ff 57.74%, #ffadad 42.26%);
-}
-
-.chart-label {
-    font-size: 0.8em;
-    color: #555;
-    text-align: center;
-}
-
-.saving-chart-widget {
-    grid-column: 1 / -1;
-}
-
-.saving-chart {
-    height: 150px;
-    background-color: #eee;
-    border-radius: 4px;
-}
-
-.widget-title {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-/* --- Budget Screen Styles --- */
-.budget-container {
-    /* Layout for the Budget screen */
-}
-
-.budget-nav {
-    display: flex;
-    background-color: #e0f7fa;
-    border-radius: 6px;
-    margin-bottom: 20px;
-}
-
-.budget-nav button {
-    flex: 1;
-    border: none;
-    background-color: transparent;
-    color: #00897b;
-    padding: 10px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-}
-
-.budget-nav button.active {
-    border-bottom: 2px solid #00897b;
-}
-
-.balance-summary {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.balance-summary p {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.balance-summary p strong {
-    color: #333;
-}
-
-.transaction-tabs {
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.transaction-tabs button {
-    background-color: #00c6ae;
-    color: #fff;
-    border: none;
-    padding: 10px 15
-    5px;
-    margin-right: 5px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.transaction-tabs button.inactive {
-    background-color: #e0e0e0;
-    color: #777;
-}
-
-.cash-transactions {
-    margin-bottom: 20px;
-}
-
-.transaction-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.transaction-details {
-    display: flex;
-    align-items: center;
-}
-
-.transaction-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 15px;
-    font-size: 1.2em;
-}
-
-.car-icon {
-    background-color: #ffe0b2;
-    color: #f57c00;
-}
-
-.apartment-icon {
-    background-color: #ffcdd2;
-    color: #e53935;
-}
-
-.present-icon {
-    background-color: #bbdefb;
-    color: #1e88e5;
-}
-
-.transaction-info {
-    flex-grow: 1;
-}
-
-.transaction-date {
-    color: #777;
-    font-size: 0.8em;
-    margin-bottom: 3px;
-}
-
-.transaction-description {
-    font-weight: bold;
-    color: #333;
-}
-
-.transaction-amount {
-    font-weight: bold;
-    color: #2e7d32;
-}
-
-.see-all-button-container {
-    text-align: center;
-}
-
-.see-all-button {
-    background-color: transparent;
-    color: #00897b;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* --- Add Daily Budget Screen Styles --- */
-.add-budget-container {
-    width: 400px;
-    margin: 0 auto; /* Center the add budget section within its container */
-}
-
-.add-budget-header {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
-    background-color: #e0f7fa;
-    border-radius: 6px;
-    padding: 10px;
-}
-
-.add-budget-header button {
-    border: none;
-    background-color: transparent;
-    color: #00897b;
-    padding: 8px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-}
-
-.add-budget-header button.active {
-    border-bottom: 2px solid #00897b;
-}
-
-.amount-input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.amount-input {
-    font-size: 2em;
-    color: #333;
-    border: none;
-    padding: 10px;
-    width: 150px;
-    text-align: right;
-}
-
-.currency {
-    color: #777;
-    font-size: 1.2em;
-    margin-left: 10px;
-}
-
-.minus-sign {
-    margin-right: 5px;
-    color: #333;
-    font-size: 2em;
-}
-
-.from-account-label {
-    color: #555;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.account-buttons {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.account-buttons button {
-    border: 1px solid #00c6ae;
-    background-color: transparent;
-    color: #00c6ae;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.account-buttons button.active {
-    background-color: #00c6ae;
-    color: #fff;
-}
-
-.calendar-container {
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    color: #00897b;
-    font-weight: bold;
-}
-
-.calendar-controls {
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-}
-
-.calendar-day-header {
-    color: #777;
-    font-size: 0.9em;
-}
-
-.calendar-day {
-    padding: 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #555;
-}
-
-.calendar-day.selected {
-    background-color: #00897b;
-    color: #fff;
-    font-weight: bold;
-}
-
-.prev-month-day,
-.next-month-day {
-    color: #ddd;
-}
-
-.confirm-button-container {
-    text-align: center;
-}
-
-.confirm-button {
-    background-color: #00c6ae;
-    color: #fff;
-    border: none;
-    padding: 12px 30px;
     border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Initially hide all sections except the dashboard */
-.budget-container,
-.add-budget-container {
-    display: none;
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+input[type="number"],
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#expenses {
+    list-style: none;
+    padding: 0;
+}
+
+#expenses li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#expenses li:last-child {
+    border-bottom: none;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    height: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    background-color: #28a745;
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
 }

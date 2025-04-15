@@ -3,203 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budgeting App</title>
+    <title>Budget App Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
-    <div class="container">
-        <section class="dashboard-container">
-            <div class="dashboard-widget total-balance-widget">
-                <div class="total-balance">60,28</div>
-                <div class="balance-details">
-                    Spending account 423,55<br>
-                    Saving account 577,45<br>
-                    Cash 0
-                </div>
+    <div class="container dashboard-container">
+        <header>
+            <h1>My Finances</h1>
+        </header>
+
+        <section id="account-balances">
+            <h2>Account Balances</h2>
+            <div class="balance-item">
+                <span>Spending Account:</span>
+                <span id="spending-balance">$500.75</span>
+            </div>
+            <div class="balance-item">
+                <span>Saving Account:</span>
+                <span id="saving-balance">$2500.20</span>
+            </div>
+            <div class="total-balance">
+                <span>Total Balance:</span>
+                <span id="total-balance">$3000.95</span>
             </div>
 
-            <div class="dashboard-widget pie-chart-widget">
-                <div class="widget-title"></div>
-                <div class="pie-chart"></div>
-                <div class="chart-label"></div>
-            </div>
-
-            <div class="dashboard-widget pie-chart-widget">
-                <div class="widget-title">Earnings this month</div>
-                <div class="pie-chart earnings-chart"></div>
-                <div class="chart-label">Spend</div>
-                <div class="chart-label">Save</div>
-            </div>
-
-            <div class="dashboard-widget pie-chart-widget">
-                <div class="widget-title">Spent this month</div>
-                <div class="pie-chart spent-chart"></div>
-                <div class="chart-label">Rent</div>
-                <div class="chart-label">Food</div>
-            </div>
-
-            <div class="dashboard-widget saving-chart-widget">
-                <div class="widget-title">Saving</div>
-                <div class="saving-chart">
-                    </div>
-            </div>
+            <canvas id="balance-chart" width="300" height="200"></canvas>
         </section>
 
-        <section class="budget-container">
-            <div class="budget-nav">
-                <button class="active">Personal</button>
-                <button>Household</button>
-            </div>
-
-            <div class="balance-summary">
-                <p>Total balance: <strong>60,28</strong></p>
-                <p>Spending account: <strong>423,55</strong></p>
-                <p>Saving account: <strong>577,45</strong></p>
-                <p>Cash: <strong>0</strong></p>
-            </div>
-
-            <div class="transaction-tabs">
-                <button class="active">Transactions</button>
-                <button class="inactive">Expenses</button>
-                <button class="inactive">Goals</button>
-            </div>
-
-            <div class="cash-transactions">
-                <h3>Cash</h3>
-                <div class="transaction-item">
-                    <div class="transaction-details">
-                        <div class="transaction-icon car-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M10 18a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zM21 16v-2l-1-5V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v2l-1 5v2c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zM6 7h12v2H6V7z"/></svg>
-                        </div>
-                        <div class="transaction-info">
-                            <div class="transaction-date">12 february 2022</div>
-                            <div class="transaction-description">Car</div>
-                        </div>
-                    </div>
-                    <div class="transaction-amount">500 euros</div>
-                </div>
-
-                <div class="transaction-item">
-                    <div class="transaction-details">
-                        <div class="transaction-icon apartment-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10V7h-2v4h-2v-4H9v4H7V7H5v6h2v-2h2v4h2v-4h2v2h2v-6z"/></svg>
-                        </div>
-                        <div class="transaction-info">
-                            <div class="transaction-date">12 february 2022</div>
-                            <div class="transaction-description">Apartment</div>
-                        </div>
-                    </div>
-                    <div class="transaction-amount">4000 euros</div>
-                </div>
-
-                <div class="transaction-item">
-                    <div class="transaction-details">
-                        <div class="transaction-icon present-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8l-2.29 2.29-2.29-2.29L12 10l2.29 2.29L10 14l2.29 2.29L14 12l2.29 2.29L18 10l-2.29-2.29L18 8m-8-4h8c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H10c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2m2 14h4V8h-4v8z"/></svg>
-                        </div>
-                        <div class="transaction-info">
-                            <div class="transaction-date">12 february 2022</div>
-                            <div class="transaction-description">Grandma's present</div>
-                        </div>
-                    </div>
-                    <div class="transaction-amount">40 euros</div>
-                </div>
-
-                <div class="transaction-item">
-                    <div class="transaction-details">
-                        <div class="transaction-icon apartment-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10V7h-2v4h-2v-4H9v4H7V7H5v6h2v-2h2v4h2v-4h2v2h2v-6z"/></svg>
-                        </div>
-                        <div class="transaction-info">
-                            <div class="transaction-date">12 february 2022</div>
-                            <div class="transaction-description">Apartment</div>
-                        </div>
-                    </div>
-                    <div class="transaction-amount">4000 euros</div>
-                </div>
-
-                <div class="see-all-button-container">
-                    <button class="see-all-button">See all</button>
-                </div>
-            </div>
+        <section id="spending-overview">
+            <h2>Spending Overview (Last 7 Days - Prototype Data)</h2>
+            <canvas id="spending-chart" width="400" height="250"></canvas>
         </section>
 
-        <section class="add-budget-container">
-            <h2>Add daily budget</h2>
-            <div class="add-budget-header">
-                <button class="income-button inactive">New income</button>
-                <button class="expense-button active">New expense</button>
-            </div>
-
-            <div class="amount-input-group">
-                <span class="minus-sign">–</span> <input type="text" class="amount-input" value="89,0"> <span class="currency">euro</span>
-            </div>
-
-            <div class="from-account-label">From account</div>
-            <div class="account-buttons">
-                <button class="spending-account active"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-1-5V7c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v2l-1 5v2c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zM6 7h12v2H6V7z"/></svg></span> Spending</button>
-                <button class="saving-account">Saving</button>
-                <button class="cash-account">Cash</button>
-            </div>
-
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <span class="calendar-controls prev-month">&lt;</span>
-                    <span class="current-month">April, 2021</span>
-                    <span class="calendar-controls next-month">&gt;</span>
-                </div>
-                <div class="calendar-grid">
-                    <div class="calendar-day-header">Mo</div>
-                    <div class="calendar-day-header">Tu</div>
-                    <div class="calendar-day-header">We</div>
-                    <div class="calendar-day-header">Th</div>
-                    <div class="calendar-day-header">Fr</div>
-                    <div class="calendar-day-header">Sa</div>
-                    <div class="calendar-day-header">Su</div>
-                    <div class="calendar-day prev-month-day">29</div>
-                    <div class="calendar-day prev-month-day">30</div>
-                    <div class="calendar-day prev-month-day">31</div>
-                    <div class="calendar-day">1</div>
-                    <div class="calendar-day">2</div>
-                    <div class="calendar-day">3</div>
-                    <div class="calendar-day">4</div>
-                    <div class="calendar-day">5</div>
-                    <div class="calendar-day">6</div>
-                    <div class="calendar-day selected">7</div>
-                    <div class="calendar-day">8</div>
-                    <div class="calendar-day">9</div>
-                    <div class="calendar-day">10</div>
-                    <div class="calendar-day">11</div>
-                    <div class="calendar-day">12</div>
-                    <div class="calendar-day">13</div>
-                    <div class="calendar-day">14</div>
-                    <div class="calendar-day">15</div>
-                    <div class="calendar-day empty">0</div>
-                    <div class="calendar-day">17</div>
-                    <div class="calendar-day">18</div>
-                    <div class="calendar-day">19</div>
-                    <div class="calendar-day">20</div>
-                    <div class="calendar-day">21</div>
-                    <div class="calendar-day">22</div>
-                    <div class="calendar-day">23</div>
-                    <div class="calendar-day">24</div>
-                    <div class="calendar-day">25</div>
-                    <div class="calendar-day">26</div>
-                    <div class="calendar-day">27</div>
-                    <div class="calendar-day">28</div>
-                    <div class="calendar-day">29</div>
-                    <div class="calendar-day">30</div>
-                    <div class="calendar-day next-month-day">1</div>
-                    <div class="calendar-day next-month-day">2</div>
-                </div>
-            </div>
-
-            <div class="confirm-button-container">
-                <button class="confirm-button">Confirm</button>
-            </div>
+        <section id="navigation">
+            <button id="go-to-budget-btn">Go to Daily Budget</button>
+            <button id="go-to-saving-goals-btn">Saving Goals</button>
         </section>
     </div>
 
-    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="chart.js"></script>
 </body>
 </html>
