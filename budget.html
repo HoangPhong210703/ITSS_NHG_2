@@ -1,61 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Budget App</title>
+    <title>Ngân Sách Hàng Ngày</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="calendar.css"> </head>
+    <link rel="stylesheet" href="calendar.css">
+</head>
 <body>
     <div class="container">
         <header>
-            <h1>Daily Budget</h1>
+            <h1>Ngân Sách Hàng Ngày</h1>
         </header>
 
         <section id="budget-input">
-            <h2>Set Budget for a Day</h2>
-            <label for="budget-date">Select Date:</label>
+            <h2>Thiết Lập Ngân Sách Cho Một Ngày</h2>
+            <label for="budget-date">Chọn Ngày:</label>
             <input type="date" id="budget-date">
-            <label for="daily-budget">Enter Budget:</label>
-            <input type="number" id="daily-budget" placeholder="Enter amount">
-            <button id="set-budget-btn">Set Budget</button>
-            <p id="budget-set-message" style="display:none; color: green;">Budget set for <span id="set-date-display"></span>.</p>
+            <label for="daily-budget">Nhập Ngân Sách:</label>
+            <input type="number" id="daily-budget" placeholder="Nhập số tiền">
+            <button id="set-budget-btn">Thiết Lập Ngân Sách</button>
+            <p id="budget-set-message" style="display:none; color: green;">Ngân sách đã được thiết lập cho <span id="set-date-display"></span>.</p>
         </section>
 
         <section id="expense-input">
-            <h2>Add New Expense for Today</h2>
-            <input type="text" id="expense-description" placeholder="Description">
-            <input type="number" id="expense-amount" placeholder="Amount">
-            <button id="add-expense-btn">Add Expense</button>
+            <h2>Thêm Chi Tiêu Mới Cho Hôm Nay</h2>
+            <input type="text" id="expense-description" placeholder="Mô tả">
+            <input type="number" id="expense-amount" placeholder="Số tiền">
+            <button id="add-expense-btn">Thêm Chi Tiêu</button>
         </section>
 
         <section id="expense-list">
-            <h2>Today's Expenses (<span id="current-date-display"></span>)</h2>
+            <h2>Các Khoản Chi Hôm Nay (<span id="current-date-display"></span>)</h2>
             <ul id="expenses">
                 </ul>
-            <p id="no-expenses" style="display:none;">No expenses added yet for this day.</p>
+            <p id="no-expenses" style="display:none;">Chưa có khoản chi nào được thêm cho ngày này.</p>
         </section>
 
         <section id="budget-summary">
-            <h2>Budget Overview for <span id="summary-date-display"></span></h2>
+            <h2>Tổng Quan Ngân Sách Cho <span id="summary-date-display"></span></h2>
             <div class="summary-item">
-                <span>Budget:</span>
-                <span id="total-budget">$0.00</span>
+                <span>Ngân Sách:</span>
+                <span id="total-budget">0.00 VNĐ</span>
             </div>
             <div class="summary-item">
-                <span>Spent:</span>
-                <span id="total-spent">$0.00</span>
+                <span>Đã Chi:</span>
+                <span id="total-spent">0.00 VNĐ</span>
             </div>
             <div class="summary-item">
-                <span>Remaining:</span>
-                <span id="remaining-budget">$0.00</span>
+                <span>Còn Lại:</span>
+                <span id="remaining-budget">0.00 VNĐ</span>
             </div>
             <div id="progress-bar-container">
                 <div id="progress-bar"></div>
             </div>
         </section>
-    </div>
 
-    <script src="script.js"></script>
+        <script src="script.js"></script>
+    </div>
 </body>
 </html>
