@@ -1,93 +1,101 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('nav a');
-    const screens = document.querySelectorAll('.screen');
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Navigation ---
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-    // Function to hide all screens
-    function hideAllScreens() {
-        screens.forEach(screen => screen.classList.remove('active'));
-    }
+    function changeTab(tabName) {
+        tabLinks.forEach(link => link.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
 
-    // Function to show a specific screen
-    function showScreen(id) {
-        const screenToShow = document.getElementById(id);
-        if (screenToShow) {
-            hideAllScreens();
-            screenToShow.classList.add('active');
+        const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
+        const selectedContent = document.getElementById(tabName);
+
+        if (selectedTab && selectedContent) {
+            selectedTab.classList.add('active');
+            selectedContent.classList.add('active');
         }
     }
 
-    // Navigation event listeners
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            showScreen(targetId);
+    tabLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const tab = link.dataset.tab;
+            changeTab(tab);
         });
     });
 
-    // Initially show the dashboard
-    showScreen('dashboard');
+    changeTab('transactions'); // Show the first tab by default
 
-    // --- Functionality (Needs more implementation) ---
+    // --- Add Transaction ---
+    const addTransactionButton = document.getElementById('add-transaction');
+    const incomeInput = document.getElementById('income');
+    const expenseInput = document.getElementById('expense');
+    const transactionList = document.querySelector('.transaction-list');
+    const expenseList = document.querySelector('.expense-list');
 
-    // Function 1: Enter Budget Manually and Track
-    const aprilBudgetElement = document.getElementById('april-budget');
-    const aprilExpendedElement = document.getElementById('april-expended');
-    const aprilTotalBudgetElement = document.getElementById('april-total-budget');
-    const aprilTotalExpendedElement = document.getElementById('april-total-expended');
-    const expendedBar = document.querySelector('.expended-bar');
-    const remainingBar = document.querySelector('.remaining-bar');
+    addTransactionButton.addEventListener('click', () => {
+        const incomeValue = parseFloat(incomeInput.value);
+        const expenseValue = parseFloat(expenseInput.value);
 
-    // Example data (replace with actual data fetching/storage)
-    const aprilBudget = 100;
-    const aprilExpended = 50;
-    aprilBudgetElement.textContent = `${aprilBudget} USD`;
-    aprilExpendedElement.textContent = `${aprilExpended} USD`;
-    aprilTotalBudgetElement.textContent = `${aprilBudget}`;
-    aprilTotalExpendedElement.textContent = `${aprilExpended}`;
-
-    const expendedPercentage = (aprilExpended / aprilBudget) * 100;
-    const remainingPercentage = 100 - expendedPercentage;
-    expendedBar.style.width = `${expendedPercentage}%`;
-    remainingBar.style.width = `${remainingPercentage}%`;
-
-    // Function 2: Set Budget Goal
-    const setBudgetBtn = document.getElementById('set-budget-btn');
-    const budgetTypeSelect = document.getElementById('budget-type');
-    const budgetAmountInput = document.getElementById('budget-amount');
-    const budgetMessageDiv = document.getElementById('budget-message');
-
-    setBudgetBtn.addEventListener('click', function() {
-        const type = budgetTypeSelect.value;
-        const amount = parseFloat(budgetAmountInput.value);
-
-        if (isNaN(amount) || amount <= 0) {
-            budgetMessageDiv.textContent = 'Please enter a valid budget amount.';
-            budgetMessageDiv.style.color = 'red';
-            return;
+        if (!isNaN(incomeValue) && incomeValue > 0) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<span>Income: ${incomeValue} €</span><span>Cash</span>`;
+            transactionList.appendChild(listItem);
+            incomeInput.value = '';
         }
 
-        // In a real app, you would store this budget goal
-        budgetMessageDiv.textContent = `Budget of ${amount} USD set for ${type}.`;
-        budgetMessageDiv.style.color = 'green';
-        budgetAmountInput.value = ''; // Clear input
+        if (!isNaN(expenseValue) && expenseValue > 0) {
+             const listItem = document.createElement('li');
+            listItem.innerHTML = `<span>Expense: ${expenseValue} €</span><span>Cash</span>`;
+            expenseList.appendChild(listItem);
+            expenseInput.value = '';
+        }
     });
 
-    // Function 3: Track Saving Progress
-    const thisMonthSavedElement = document.getElementById('this-month-saved');
-    const totalSavedElement = document.getElementById('total-saved');
+    // --- Calendar ---
+    const calendarEl = document.getElementById('calendar');
+    const monthSelect = document.getElementById('month-select');
+    const yearSelect = document.getElementById('year-select');
 
-    // Example data (replace with actual data fetching/storage)
-    const thisMonthSavings = 20;
-    const totalSavings = 150;
-    thisMonthSavedElement.textContent = `${thisMonthSavings} USD`;
-    totalSavedElement.textContent = `${totalSavings} USD`;
+    const monthNames = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
-    // Update dashboard values (example)
-    document.getElementById('march-budget').textContent = '80 USD';
-    document.getElementById('march-expended').textContent = '60 USD';
-    document.getElementById('may-budget').textContent = '120 USD';
-    document.getElementById('may-expended').textContent = '75 USD';
-    document.getElementById('today-left').textContent = '15 USD';
-    document.getElementById('week-left').textContent = '60 USD';
+    function createCalendar(month, year) {
+        calendarEl.innerHTML = ''; // Clear previous calendar
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // Add headers for days of the week
+        for (let dayName of monthNames) {
+            const headerCell = document.createElement('div');
+            headerCell.classList.add('header');
+            headerCell.textContent = dayName;
+            calendarEl.appendChild(headerCell);
+        }
+
+        // Add empty cells for days before the first day of the month
+        for (let i = 0; i < firstDay; i++) {
+            calendarEl.appendChild(document.createElement('div'));
+        }
+
+        // Add cells for each day of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayCell = document.createElement('div');
+            dayCell.textContent = day;
+            calendarEl.appendChild(dayCell);
+        }
+    }
+    const initialMonth = parseInt(monthSelect.value);
+    const initialYear = parseInt(yearSelect.value);
+    createCalendar(initialMonth, initialYear);
+
+    monthSelect.addEventListener('change', () => {
+        const selectedMonth = parseInt(monthSelect.value);
+        const selectedYear = parseInt(yearSelect.value);
+        createCalendar(selectedMonth, selectedYear);
+    });
+
+    yearSelect.addEventListener('change', () => {
+        const selectedMonth = parseInt(monthSelect.value);
+        const selectedYear = parseInt(yearSelect.value);
+        createCalendar(selectedMonth, selectedYear);
+    });
 });

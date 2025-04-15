@@ -4,86 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budgeting App</title>
-    <link rel="stylesheet" href="style.css"> </head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#budgeting">Budgeting</a></li>
-            <li><a href="#saving">Saving Goals</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <section id="dashboard" class="screen active">
-            <h1>Dashboard</h1>
-            <div class="monthly-overview">
-                <h2>Recent Months</h2>
-                <div class="month-card">
-                    <h3>March</h3>
-                    <p>Budget: <span id="march-budget"></span></p>
-                    <p>Expended: <span id="march-expended"></span></p>
+    <div class="container">
+        <header>
+            <h1>Budget</h1>
+        </header>
+        <main>
+            <section id="balance-section" class="card">
+                <h2>Total Balance</h2>
+                <p class="balance-amount">60,28 €</p>
+                <div class="account-balances">
+                    <div>
+                        <p>Spending Account:</p>
+                        <p class="account-amount">423,55 €</p>
+                    </div>
+                    <div>
+                        <p>Saving Account:</p>
+                        <p class="account-amount">577,45 €</p>
+                    </div>
+                    <div>
+                        <p>Cash:</p>
+                        <p class="account-amount">0 €</p>
+                    </div>
                 </div>
-                <div class="month-card">
-                    <h3>April</h3>
-                    <p>Budget: <span id="april-budget"></span></p>
-                    <p>Expended: <span id="april-expended"></span></p>
+            </section>
+
+            <section id="input-section" class="card">
+                <div class="input-options">
+                    <button class="active">Personal</button>
+                    <button>Household</button>
                 </div>
-                <div class="month-card">
-                    <h3>May</h3>
-                    <p>Budget: <span id="may-budget"></span></p>
-                    <p>Expended: <span id="may-expended"></span></p>
+                <div class="transaction-input">
+                    <div class="input-group">
+                        <label for="income">New income</label>
+                        <input type="number" id="income" placeholder="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="expense">New expense</label>
+                        <input type="number" id="expense" placeholder="0">
+                    </div>
+                    <button id="add-transaction">Add</button>
                 </div>
-            </div>
+            </section>
 
-            <div class="current-status">
-                <h2>Current Status</h2>
-                <p>Budget Left Today: <span id="today-left"></span></p>
-                <p>Budget Left This Week: <span id="week-left"></span></p>
-            </div>
-        </section>
-
-        <section id="budgeting" class="screen">
-            <h1>Budgeting</h1>
-            <div class="budget-input">
-                <h2>Set Budget</h2>
-                <label for="budget-type">Set budget for:</label>
-                <select id="budget-type">
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                    <option value="monthly">Monthly</option>
-                </select>
-                <label for="budget-amount">Amount:</label>
-                <input type="number" id="budget-amount" placeholder="Enter amount">
-                <button id="set-budget-btn">Set Budget</button>
-                <div id="budget-message"></div>
-            </div>
-
-            <div class="budget-tracking">
-                <h2>Budget Tracking (Example: April)</h2>
-                <p>April Budget: <span id="april-total-budget"></span> USD</p>
-                <p>April Expended: <span id="april-total-expended"></span> USD</p>
-                <div class="budget-chart">
-                    <div class="expended-bar" style="width: 50%;"></div>
-                    <div class="remaining-bar" style="width: 50%;"></div>
+            <section id="transaction-section" class="card">
+                 <div class="tab-buttons">
+                    <button class="tab-link active" data-tab="transactions">Transactions</button>
+                    <button class="tab-link" data-tab="expenses">Expenses</button>
+                    <button class="tab-link" data-tab="goals">Goals</button>
                 </div>
-            </div>
-        </section>
+                <div id="transactions" class="tab-content active">
+                    <ul class="transaction-list">
+                        </ul>
+                </div>
+                <div id="expenses" class="tab-content">
+                    <ul class="expense-list">
+                        </ul>
+                </div>
+                 <div id="goals" class="tab-content">
+                    <ul class="goal-list">
+                        </ul>
+                </div>
+            </section>
 
-        <section id="saving" class="screen">
-            <h1>Saving Goals</h1>
-            <div class="saving-progress">
-                <h2>Current Month Savings (April)</h2>
-                <p>Total Saved This Month: <span id="this-month-saved"></span> USD</p>
-            </div>
-
-            <div class="total-savings">
-                <h2>Total Savings</h2>
-                <p>Total Amount Saved: <span id="total-saved"></span> USD</p>
-            </div>
-        </section>
-    </main>
-
+            <section id="history-section" class="card">
+                <h2>History</h2>
+                <div class="history-filter">
+                    <label for="month-select">Month:</label>
+                    <select id="month-select">
+                        <option value="january">January</option>
+                        <option value="february">February</option>
+                        <option value="march">March</option>
+                        <option value="april">April</option>
+                        <option value="may">May</option>
+                        </select>
+                    <label for="year-select">Year:</label>
+                    <select id="year-select">
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        </select>
+                </div>
+                <div id="calendar">
+                    </div>
+            </section>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
