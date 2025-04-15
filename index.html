@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bảng Điều Khiển Ứng Dụng Quản Lý Chi Tiêu</title>
+    <title>Budget App Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
     <div class="container dashboard-container">
         <header>
-            <h1>Tài Chính Của Tôi</h1>
+            <h1>My Finances</h1>
         </header>
 
         <section id="account-balances">
-            <h2>Số Dư Tài Khoản</h2>
+            <h2>Account Balances</h2>
             <div class="balance-item">
-                <span>Tài Khoản Chi Tiêu:</span>
-                <span id="spending-balance">500.75 VNĐ</span>
+                <span>Spending Account:</span>
+                <span id="spending-balance">$500.75</span>
             </div>
             <div class="balance-item">
-                <span>Tài Khoản Tiết Kiệm:</span>
-                <span id="saving-balance">2500.20 VNĐ</span>
+                <span>Saving Account:</span>
+                <span id="saving-balance">$2500.20</span>
             </div>
             <div class="total-balance">
-                <span>Tổng Số Dư:</span>
-                <span id="total-balance">3000.95 VNĐ</span>
+                <span>Total Balance:</span>
+                <span id="total-balance">$3000.95</span>
             </div>
 
             <canvas id="balance-chart" width="300" height="200"></canvas>
         </section>
 
         <section id="spending-overview">
-            <h2>Tổng Quan Chi Tiêu (7 Ngày Gần Nhất - Dữ Liệu Mẫu)</h2>
+            <h2>Spending Overview (Last 7 Days - Prototype Data)</h2>
             <canvas id="spending-chart" width="400" height="250"></canvas>
         </section>
 
         <section id="navigation">
-            <button id="go-to-budget-btn">Đi Tới Ngân Sách Hàng Ngày</button>
-            <button id="go-to-saving-goals-btn">Mục Tiêu Tiết Kiệm</button>
+            <button id="go-to-budget-btn">Go to Daily Budget</button>
+            <button id="go-to-saving-goals-btn">Saving Goals</button>
         </section>
     </div>
 

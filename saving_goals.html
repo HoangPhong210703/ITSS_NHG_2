@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mục Tiêu Tiết Kiệm</title>
+    <title>Saving Goals</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="saving_goals.css">
 </head>
 <body>
     <div class="container saving-goals-container">
         <header>
-            <h1>Mục Tiêu Tiết Kiệm</h1>
+            <h1>Saving Goals</h1>
         </header>
 
         <section id="add-goal">
-            <h2>Thêm Mục Tiêu Mới</h2>
-            <input type="text" id="goal-name" placeholder="Tên Mục Tiêu">
-            <input type="number" id="target-amount" placeholder="Số Tiền Mục Tiêu">
-            <button id="add-goal-btn">Thêm Mục Tiêu</button>
+            <h2>Add New Goal</h2>
+            <input type="text" id="goal-name" placeholder="Goal Name">
+            <input type="number" id="target-amount" placeholder="Target Amount">
+            <button id="add-goal-btn">Add Goal</button>
         </section>
 
         <section id="goal-list">
-            <h2>Mục Tiêu Của Tôi</h2>
+            <h2>My Goals</h2>
             <ul id="goals">
                 <li class="goal-item">
-                    <span>Kỳ Nghỉ Mơ Ước</span>
-                    <span>Mục Tiêu: 5000 VNĐ</span>
-                    <span>Đã Tiết Kiệm: 1200 VNĐ</span>
+                    <span>New Iphone</span>
+                    <span>Target: $5000</span>
+                    <span>Saved: $1200</span>
                     <div class="progress-bar-container">
                         <div class="progress-bar" style="width: 24%;"></div>
                     </div>
                 </li>
                 <li class="goal-item">
-                    <span>Laptop Mới</span>
-                    <span>Mục Tiêu: 1500 VNĐ</span>
-                    <span>Đã Tiết Kiệm: 750 VNĐ</span>
+                    <span>New Laptop</span>
+                    <span>Target: $1500</span>
+                    <span>Saved: $750</span>
                     <div class="progress-bar-container">
                         <div class="progress-bar" style="width: 50%;"></div>
                     </div>
                 </li>
                 </ul>
-            <p id="no-goals" style="display:none;">Chưa có mục tiêu tiết kiệm nào được thêm.</p>
+            <p id="no-goals" style="display:none;">No saving goals added yet.</p>
         </section>
 
-        <button id="back-to-dashboard-btn">Quay Lại Bảng Điều Khiển</button>
+        <button id="back-to-dashboard-btn">Back to Dashboard</button>
     </div>
 
     <script src="saving_goals.js"></script>
