@@ -1,101 +1,60 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Navigation ---
-    const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    function changeTab(tabName) {
-        tabLinks.forEach(link => link.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-
-        const selectedTab = document.querySelector(`[data-tab="${tabName}"]`);
-        const selectedContent = document.getElementById(tabName);
-
-        if (selectedTab && selectedContent) {
-            selectedTab.classList.add('active');
-            selectedContent.classList.add('active');
-        }
-    }
-
-    tabLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            const tab = link.dataset.tab;
-            changeTab(tab);
+document.addEventListener('DOMContentLoaded', function() {
+    const accountButtons = document.querySelectorAll('.account-buttons button');
+    accountButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            accountButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
         });
     });
 
-    changeTab('transactions'); // Show the first tab by default
-
-    // --- Add Transaction ---
-    const addTransactionButton = document.getElementById('add-transaction');
-    const incomeInput = document.getElementById('income');
-    const expenseInput = document.getElementById('expense');
-    const transactionList = document.querySelector('.transaction-list');
-    const expenseList = document.querySelector('.expense-list');
-
-    addTransactionButton.addEventListener('click', () => {
-        const incomeValue = parseFloat(incomeInput.value);
-        const expenseValue = parseFloat(expenseInput.value);
-
-        if (!isNaN(incomeValue) && incomeValue > 0) {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<span>Income: ${incomeValue} €</span><span>Cash</span>`;
-            transactionList.appendChild(listItem);
-            incomeInput.value = '';
-        }
-
-        if (!isNaN(expenseValue) && expenseValue > 0) {
-             const listItem = document.createElement('li');
-            listItem.innerHTML = `<span>Expense: ${expenseValue} €</span><span>Cash</span>`;
-            expenseList.appendChild(listItem);
-            expenseInput.value = '';
-        }
+    const addBudgetHeaderButtons = document.querySelectorAll('.add-budget-header button');
+    addBudgetHeaderButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            addBudgetHeaderButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
     });
 
-    // --- Calendar ---
-    const calendarEl = document.getElementById('calendar');
-    const monthSelect = document.getElementById('month-select');
-    const yearSelect = document.getElementById('year-select');
+    const calendarDays = document.querySelectorAll('.calendar-day');
+    calendarDays.forEach(day => {
+        day.addEventListener('click', function() {
+            document.querySelectorAll('.calendar-day.selected').forEach(selectedDay => selectedDay.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
 
-    const monthNames = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
+    // Example of how you might switch between sections (basic navigation)
+    const dashboardSection = document.querySelector('.dashboard-container');
+    const budgetSection = document.querySelector('.budget-container');
+    const addBudgetSection = document.querySelector('.add-budget-container');
 
-    function createCalendar(month, year) {
-        calendarEl.innerHTML = ''; // Clear previous calendar
-        const firstDay = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
+    // You would typically have navigation elements (e.g., buttons in a header/sidebar)
+    // to trigger these functions.
 
-        // Add headers for days of the week
-        for (let dayName of monthNames) {
-            const headerCell = document.createElement('div');
-            headerCell.classList.add('header');
-            headerCell.textContent = dayName;
-            calendarEl.appendChild(headerCell);
-        }
-
-        // Add empty cells for days before the first day of the month
-        for (let i = 0; i < firstDay; i++) {
-            calendarEl.appendChild(document.createElement('div'));
-        }
-
-        // Add cells for each day of the month
-        for (let day = 1; day <= daysInMonth; day++) {
-            const dayCell = document.createElement('div');
-            dayCell.textContent = day;
-            calendarEl.appendChild(dayCell);
-        }
+    function showDashboard() {
+        dashboardSection.style.display = 'grid';
+        budgetSection.style.display = 'none';
+        addBudgetSection.style.display = 'none';
     }
-    const initialMonth = parseInt(monthSelect.value);
-    const initialYear = parseInt(yearSelect.value);
-    createCalendar(initialMonth, initialYear);
 
-    monthSelect.addEventListener('change', () => {
-        const selectedMonth = parseInt(monthSelect.value);
-        const selectedYear = parseInt(yearSelect.value);
-        createCalendar(selectedMonth, selectedYear);
-    });
+    function showBudget() {
+        dashboardSection.style.display = 'none';
+        budgetSection.style.display = 'block';
+        addBudgetSection.style.display = 'none';
+    }
 
-    yearSelect.addEventListener('change', () => {
-        const selectedMonth = parseInt(monthSelect.value);
-        const selectedYear = parseInt(yearSelect.value);
-        createCalendar(selectedMonth, selectedYear);
-    });
+    function showAddBudget() {
+        dashboardSection.style.display = 'none';
+        budgetSection.style.display = 'none';
+        addBudgetSection.style.display = 'block';
+    }
+
+    // You'd need to add event listeners to your navigation elements
+    // For example:
+    // document.querySelector('.nav-dashboard-button').addEventListener('click', showDashboard);
+    // document.querySelector('.nav-budget-button').addEventListener('click', showBudget);
+    // document.querySelector('.nav-add-budget-button').addEventListener('click', showAddBudget);
+
+    // Initially show the dashboard
+    showDashboard();
 });
