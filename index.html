@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeting App</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#budgeting">Budgeting</a></li>
+            <li><a href="#saving">Saving Goals</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="dashboard" class="screen active">
+            <h1>Dashboard</h1>
+            <div class="monthly-overview">
+                <h2>Recent Months</h2>
+                <div class="month-card">
+                    <h3>March</h3>
+                    <p>Budget: <span id="march-budget"></span></p>
+                    <p>Expended: <span id="march-expended"></span></p>
+                </div>
+                <div class="month-card">
+                    <h3>April</h3>
+                    <p>Budget: <span id="april-budget"></span></p>
+                    <p>Expended: <span id="april-expended"></span></p>
+                </div>
+                <div class="month-card">
+                    <h3>May</h3>
+                    <p>Budget: <span id="may-budget"></span></p>
+                    <p>Expended: <span id="may-expended"></span></p>
+                </div>
+            </div>
+
+            <div class="current-status">
+                <h2>Current Status</h2>
+                <p>Budget Left Today: <span id="today-left"></span></p>
+                <p>Budget Left This Week: <span id="week-left"></span></p>
+            </div>
+        </section>
+
+        <section id="budgeting" class="screen">
+            <h1>Budgeting</h1>
+            <div class="budget-input">
+                <h2>Set Budget</h2>
+                <label for="budget-type">Set budget for:</label>
+                <select id="budget-type">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+                <label for="budget-amount">Amount:</label>
+                <input type="number" id="budget-amount" placeholder="Enter amount">
+                <button id="set-budget-btn">Set Budget</button>
+                <div id="budget-message"></div>
+            </div>
+
+            <div class="budget-tracking">
+                <h2>Budget Tracking (Example: April)</h2>
+                <p>April Budget: <span id="april-total-budget"></span> USD</p>
+                <p>April Expended: <span id="april-total-expended"></span> USD</p>
+                <div class="budget-chart">
+                    <div class="expended-bar" style="width: 50%;"></div>
+                    <div class="remaining-bar" style="width: 50%;"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="saving" class="screen">
+            <h1>Saving Goals</h1>
+            <div class="saving-progress">
+                <h2>Current Month Savings (April)</h2>
+                <p>Total Saved This Month: <span id="this-month-saved"></span> USD</p>
+            </div>
+
+            <div class="total-savings">
+                <h2>Total Savings</h2>
+                <p>Total Amount Saved: <span id="total-saved"></span> USD</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
